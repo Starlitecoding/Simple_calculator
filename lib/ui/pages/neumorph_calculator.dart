@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:calculator/ui/common/neu_button.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
@@ -42,6 +42,7 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: Colors.grey[300],
       resizeToAvoidBottomInset: true,
       body: Column(
         children: [
@@ -96,25 +97,38 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget button(String text) {
-    return Container(
-      margin: const EdgeInsets.all(4),
-      child: MaterialButton(
-        onPressed: () {
-          //Vibration
-          HapticFeedback.mediumImpact();
+  // Widget button(String text) {
+  //   return Container(
+  //     margin: const EdgeInsets.all(4),
+  //     child: MaterialButton(
+  //       onPressed: () {
+  //         //Vibration
+  //         HapticFeedback.mediumImpact();
 
-          setState(() {
-            handleButtonPress(text);
-          });
-        },
-        color: getColor(text),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        child: Text(
-          text,
-          style: const TextStyle(fontSize: 24),
-        ),
-      ),
+  //         setState(() {
+  //           handleButtonPress(text);
+  //         });
+  //       },
+  //       color: getColor(text),
+  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+  //       child: Text(
+  //         text,
+  //         style: const TextStyle(fontSize: 24),
+  //       ),
+  //     ),
+  //   );
+  // }
+  Widget button(String text) {
+    return neumorphicButton(
+      text,
+      () {
+        // Vibration
+        HapticFeedback.mediumImpact();
+
+        setState(() {
+          handleButtonPress(text);
+        });
+      },
     );
   }
 
